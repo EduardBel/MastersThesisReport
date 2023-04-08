@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass [12pt]{article}
 
 % !TEX options = -synctex=1 -interaction=nonstopmode -shell-escape -file-line-error "%DOC%"
 
@@ -7,21 +7,19 @@
 
 
 \begin{document}
+{\fontfamily{cmss}\selectfont
 
 \input{post-preamble.tex}
 
 \subfile{sections/titlepage}
-
+\subfile{sections/acknowledgements}
 
 \setcounter{page}{1}
 \pagenumbering{roman}
-
+\subfile{sections/abstract}
 \subfile{sections/index}
 
 \setlength{\parskip}{0.6em}
-
-
-\subfile{sections/abstract}
 
 \pagenumbering{arabic}
 \setcounter{page}{1}
@@ -72,8 +70,8 @@
 \begin{appendices}
     \section{Apendix example}
     % \subfile{sections/apendix1}
-
+%\appendix resets numeration and goest to letters(en case it doesnt work by default)
     % \subfile{sections/apendix2}
 \end{appendices}
-
+}
 \end{document}
