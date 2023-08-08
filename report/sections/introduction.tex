@@ -10,4 +10,55 @@ Example text example text example text example text example text example text ex
 example text example text example text example text example text example text example text
 example text example text example text example text example text example text example text
 
+\subsection{State of the art}
+(from najeeb's)
+
+While federated learning offers several advantages over centralized learning, 
+it remains vulnerable to poisoning and privacy attacks due to its decentralized 
+approach. In fact, the distributed nature of federated learn- ing can 
+exacerbate these attacks compared to traditional centralized learn- ing
+
+\subsubsection{Poisoning attacks against FL}
+Federated learning FL is vulnerable to poisoning attacks, which aim to 
+manipulate the training process by injecting malicious data or model updates. 
+Poisoning attacks against FL systems can be broadly catego- rized into two 
+types: untargeted (Blanchard et al., 2017; Wu et al., 2020b; Fang et al., 2020) 
+and targeted 
+Both targeted and untargeted poisoning attacks can be carried out during the 
+training phase of FL, either on the local data or on the local model. Data 
+poisoning attacks involve the injection of manipulated samples into the training 
+data set, which can result in the model being trained on biased or misleading data. 
+On the other hand, model poisoning attacks involve manipulating the model 
+parameters, either directly or indirectly, during the local model training 
+process.
+
+\subsubsubsection{Untargeted poisoning attacks}
+Untargeted poisoning attacks aim to compromise the availability of the global 
+model without any specific goal or objective.
+
+\subsubsubsection{Targeted poisoning attacks}
+Targeted poisoning attacks aim at making the global model misclassify a set 
+of chosen samples to an attacker-chosen target class while minimiz- ing the 
+impact on the model performance on the main task.
+
+\subsubsubsection{Privacy attacks}
+FL prevents private data sharing, but exchanging local updates can still leak 
+sensitive information about the peers’ data to attackers
+
+Local gradients or consecutive snapshots of FL model parameters can reveal 
+unintended training data features to adversaries, as DL models remember more 
+fea- tures than needed for the main task
+
+Peers’ lo- cal updates are derived from their private training data, and the 
+learnt model represents high-level statistics of the data set it was trained 
+on. Therefore, those updates can reveal private information such as class 
+representatives, membership, and properties of the local training data. 
+Attackers can infer labels from shared gradients and even recover train- ing 
+samples without prior knowledge of the data (Zhu and Han, 2020).
+
+\subsubsubsection{Defenses against poisoning attacks}
+
+
+
+
 \pagebreak

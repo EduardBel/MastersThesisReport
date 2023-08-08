@@ -3,16 +3,93 @@ intro to the section, what are we going to talk about?
 \subsection{Federated Learning}
 What is it? where can it be found? pros?\\
 \newline
-Federated Learning (FL, McMahan et al., 2017a) has emerged as a promis- ing paradigm for training machine learning (ML) models using decentralized data.(MODIFICAR)\\
+Federated Learning (FL, McMahan et al., 2017a) has emerged as a promising 
+paradigm for training machine learning (ML) models using decentralized data. \\
+The FL training process involves peers fine-tuning a global model received from 
+the server on their local data to compute local model updates that they upload to the 
+server, which aggregates them to obtain an updated global model. This process is iterated 
+until a high-quality global model is developed.\\
+FL offers several advantages over traditional centralized machine learning: 
+i) the server distributes the training computational load, which is significant for 
+large-scale ML, across the peers’ devices (e.g., smart- phones) (Bonawitz et al., 2019), 
+ii) the peers and the server obtain more accurate models due to learning from rich, joint 
+training data, and iii) privacy improves by not sharing the peers’ local data with a 
+central server.\\
+This latter advantage makes FL a suitable option for scenarios
+dealing with personal data, such as facial recognition (Xu et al., 2017), voice assistants
+ (Bhowmick et al., 2018), healthcare (Brisimi et al., 2018), next-word prediction 
+ (Hard et al., 2018), intrusion detection in IoT net- works (Mothukuri et al., 2022) 
+ and location-based services (Huang, Tong, and Feng, 2022), or in case data collection and 
+ processing are restricted due to privacy protection laws such as the GDPR 
+ (European Commis- sion, 2016)
+
+(MODIFICAR TOT, IDEA)\\
+
+FL allows multiple peers to collaboratively train a model without sharing their 
+personal data.
+
+\subsubsection{types of fl}
+Types of FL. Federated Learning is not limited to the horizontal FL framework. Several other types of FL frameworks have been developed to handle different scenarios (Mammen, 2021):
+• Horizontal federated learning (HFL): This is used when each peer has a data set with the same feature space but different sample instances. A classic use case is the Google Keyboard app, where participating mobile phones have different training data but the same features.
+• Vertical federated learning (VFL): This is used when each peer has a data set with different features but from the same sample in- stances. For example, two organizations with data about the same group of people but with different feature sets can use Vertical FL to build a shared ML model.
+• Federatedtransferlearning(FTL):ThisissimilartotraditionalML, where we want to add a new feature to a pre-trained model. An example of this is extending Vertical FL to include more sample instances that are not present in all collaborating organizations.
+• Cross-silo federated learning: This is a type of FL where partic- ipating peers are large distributed entities (e.g., hospitals, banks, and companies) that have abundant local data and computational resources, and are available for all rounds. The training data can be in horizontal or vertical FL format.
+• Cross-device federated learning: This is another type of FL where peers are small distributed entities (e.g., smartphones, wearables, and edge devices) that have limited local data and computational resources. In this type, the number of peers is large, and they are not available for all rounds. Usually, the training data are in hori- zontal FL format.
+\subsubsection{Security attacks on Federated Learning}
+
+Despite these advantages, FL is vulnerable to various security and pri- vacy attacks \\
+Regarding security, FL is vulnerable to poisoning attacks 
+(Blanco- Justicia et al., 2021; Lyu et al., 2022). Since the server has no control
+ over the behavior of the participating peers, any of them may deviate from the prescribed 
+ training protocol to attack the global model by conduct- ing either untargeted poisoning 
+ attacks (Blanchard et al., 2017; Wu et al., 2020b) or targeted poisoning attacks \\
+
+In the former type of attacks, the attacker aims to degrade the model’s over- all 
+ performance, whereas in the latter, he aims to cause the global model to misclassify 
+ some attacker-chosen inputs into an attacker-chosen class.\\
+
+Furthermore, poisoning attacks can be performed in two ways: model poisoning 
+ (Blanchard et al., 2017; Wu et al., 2020b; Bagdasaryan et al., 2020) or data poisoning\\
+
+ In model poisoning, the attackers maliciously manipulate their local model parameters 
+ before sending them to the server. In data poisoning, they inject fabricated or falsified 
+ data samples into their training data before local model train- ing. Both attacks result 
+ in poisoned updates being uploaded to the server in order to prevent the global model from 
+ converging or to bias\\
+
+ As FL becomes more prevalent in real-world applications, safeguard- ing its models against poisoning and privacy attacks becomes crucial.
+ Several defenses against poisoning attacks have been proposed\\
+
+ Most of these defenses are effective against un- targeted poisoning attacks, but they impose a high computational cost on the server to filter out poisoned updates.\\
+
+ Moreover, they often become less effective or even fail against targeted poisoning attacks such as label- flipping attacks (LFs) or backdoor attacks (BAs)\\
+
+We can use techniques such as homomorphic encryption or secure multiparty computation
+which securely aggregate updates before sending them to the server but, 
+these techniques are computationally expensive and prevent the server from inspecting
+ individual updates to detect and filter out poisoned ones.\\
+
+To detect poisoning attacks, the server requires direct access to individual updates
+
+Therefore, simultaneously achieving security, privacy and accuracy is a tough challenge for FL.\\
+
+\subsection{Deep Neural Networks}
+uh\\
+Deep neural networks (DNNs) are a class of artificial neural networks that 
+contain multiple hidden layers between the input and output lay- ers. The 
+hidden layers allow DNNs to learn more complex and sophis- ticated 
+representations of the data they are trained on. This property leads to 
+improved performance across a wide range of tasks, including computer 
+vision, natural language processing (NLP), speech recogni- tion, 
+recommendation systems, and game playing.\\
 
 
 
 
+(MODIFICAR TOT, IDEA) text.\\
 
-\subsection{Security attacks on Federated Learning}
-blabla
 
-\subsubsection{Example subsubtitle}
+
 
 
 \subsubsection{Text examples}

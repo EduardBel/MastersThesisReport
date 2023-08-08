@@ -2,7 +2,26 @@
 intro to the section, what are we going to talk about?
 \subsection{Project's architecture}
 architecture of Najeeb's code, where are my functions?
-scheme on how the system (server, epochs, peers, peer rounds) works
+scheme on how the system (server, epochs, peers, peer rounds) works\\
+
+In the typical FL (a.k.a. horizontal FL), K peers and an aggregator server
+A collaboratively build a global model W. In each training iteration
+t 2 [1, T], the server randomly selects a subset of peers S
+
+After that, the server distributes the current global model Wt to all peers
+in S. Besides Wt, the server sends a set of hyper-parameters to be used
+to train the local models, which includes the number of local epochs E,
+the local batch size BS, and the learning rate h.
+
+After receiving Wt, each
+peer k 2 S divides her local data Dk into batches of size BS and performs
+E optimization steps on Dk to compute her update Wt+1, which she up- k
+loads to the server.
+
+The federated averaging algorithm (FedAvg, McMa- han et al., 2017a) is usually employed to perform the aggregation
+Note that FedAvg is the standard way to aggregate updates in FL and is
+not meant to counter security attacks
+
 
 \subsection{Security attacks on Federated Learning}
 blabla
