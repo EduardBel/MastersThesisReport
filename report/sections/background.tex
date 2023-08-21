@@ -1,8 +1,31 @@
-\section{Background}
-intro to the section, what are we going to talk about?
+\section{Background} \label{sec:background}
+intro to the section, what are we going to talk about?\\
+
+recom by chatgpt of the outline:\\
+Explanation of the federated learning paradigm.
+Advantages and challenges of federated learning.
+Privacy and Security Concerns in Federated Learning
+Discussion of the privacy implications of decentralized training.
+Overview of security challenges in federated learning.
+Model Poisoning Attacks in Federated Learning
+Introduction to different types of model poisoning attacks.
+Discussion of existing literature and research on model poisoning attacks in federated learning.
+Highlighting the need for robust defenses against such attacks.
+State of the Art in Model Poisoning and Defenses
+Detailed exploration of recent advancements and techniques in model poisoning attacks, with a focus on label flipping attacks.
+Overview of state-of-the-art detection and mitigation strategies against model poisoning attacks in federated learning.
 \subsection{Federated Learning}
 What is it? where can it be found? pros?\\
-\newline
+Federated learning was presented in (McMahan et al., 2017) as the learning task solved by a loose federation of participants devices, which are coordinated by a central server.\\
+...explica una mica mes\\
+Therefore, FL allows building an entire ML model without sharing the clients’ data (which remain in their local devices), and by leveraging the computation capabilities of the clients’ devices (thereby alleviating the load at the server).\\\\
+
+
+Use cases of federated learning include text prediction for smartphone keyboards (Bonawitz et al., 2019), speech recognition in intelligent assistants (Leroy et al., 2019) or video recommendations (Ammad-Ud-Din et al., 2019).\\\\
+
+
+
+
 Federated Learning (FL, McMahan et al., 2017a) has emerged as a promising 
 paradigm for training machine learning (ML) models using decentralized data. \\
 The FL training process involves peers fine-tuning a global model received from 
@@ -88,8 +111,112 @@ recommendation systems, and game playing.\\
 
 (MODIFICAR TOT, IDEA) text.\\
 
+\subsection{defenses}
+“A more realistic scenario is one in which only a small fraction of clients participates in each global training epoch.”.
+explain defenses used/ rules
+
+explicar mail "idea FL"\\
+
+With respect to their role, adversaries can be classified into four types:
+• Honest-but-curious FL server. A curious FL server receives updates W
+it from each participant over time and uses Wit to infer information about the
+private data set of individual clients.
+• Malicious FL server. Such a server can perform powerful attacks because
+it can also control the view of each client on the global model. In this way, a malicious FL server can extract additional information about the private data set of a client.
+only observe the global parameters over time, W , and she can use the successive parameters of the model to infer information about the private data of other clients.
+• Honest-but-curious client. An adversarial honest-but-curious client i can t
+• Malicious client. An adversarial malicious client i can obtain the aggregated updates from all other clients and can craft her own adversarial parameter
+
+updates in order to get as much info as possible about the private data of other clients
+\\
+
+Privacy attacks to FL can be classified into two fundamental and related categories (Melis et al., 2019):
+• Membership inference attacks. They consist in determining whether an individual data record was in the training data set. The ability of an adversary to infer the presence of a specific record in the input data training constitutes an immediate privacy threat if the training data are private or sensitive.
+• Properties of training data inference attacks. In FL, the distribution of individuals belonging to different classes may differ among the various private data sets. This attack aims at inferring properties of a class: for example, for facial recognition models, if a class corresponds to a certain individual, the attacker could infer that the individual wears glasses (Fredrikson et al., 2015).\\
 
 
+\subsection{State of the art} \label{sec:state_of_the_art}
+(from najeeb's)
+
+While federated learning offers several advantages over centralized learning, 
+it remains vulnerable to poisoning and privacy attacks due to its decentralized 
+approach. In fact, the distributed nature of federated learn- ing can 
+exacerbate these attacks compared to traditional centralized learn- ing
+
+FL is still vulnerable to security and privacy attacks. Regarding security, FL is vulnerable to Byzantine attacks, which aim at preventing the model from converging, and to poisoning attacks, which aim at causing convergence to a wrong model \\\\
+
+\subsubsection{Privacy attacks}
+FL prevents private data sharing, but exchanging local updates can still leak 
+sensitive information about the peers’ data to attackers
+
+Local gradients or consecutive snapshots of FL model parameters can reveal 
+unintended training data features to adversaries, as DL models remember more 
+fea- tures than needed for the main task
+
+Peers’ lo- cal updates are derived from their private training data, and the 
+learnt model represents high-level statistics of the data set it was trained 
+on. Therefore, those updates can reveal private information such as class 
+representatives, membership, and properties of the local training data. 
+Attackers can infer labels from shared gradients and even recover train- ing 
+samples without prior knowledge of the data (Zhu and Han, 2020).
+
+
+
+\subsubsection{Poisoning attacks against FL}
+
+
+
+Federated learning FL is vulnerable to poisoning attacks, which aim to 
+manipulate the training process by injecting malicious data or model updates. 
+Poisoning attacks against FL systems can be broadly catego- rized into two 
+types: untargeted (Blanchard et al., 2017; Wu et al., 2020b; Fang et al., 2020) 
+and targeted 
+Both targeted and untargeted poisoning attacks can be carried out during the 
+training phase of FL, either on the local data or on the local model. Data 
+poisoning attacks involve the injection of manipulated samples into the training 
+data set, which can result in the model being trained on biased or misleading data. 
+On the other hand, model poisoning attacks involve manipulating the model 
+parameters, either directly or indirectly, during the local model training 
+process.
+
+
+
+
+
+
+
+
+\subsubsection{Untargeted poisoning attacks}
+Untargeted poisoning attacks aim to compromise the availability of the global 
+model without any specific goal or objective.
+
+\subsubsection{Targeted poisoning attacks}
+Targeted poisoning attacks aim at making the global model misclassify a set 
+of chosen samples to an attacker-chosen target class while minimiz- ing the 
+impact on the model performance on the main task.
+
+
+\subsubsection{To succeed}
+For an attack to succeed, the attacker needs to overwhelm the influence of the rest of the clients in the aggregation function.\\
+The attacker can achieve this by either:
+• Boosting her own updates by a scaling factor
+• Colluding with other malicious clients(other attackers or other accounts of the same attacker)
+• Combining both approaches\\
+
+
+
+
+
+
+\subsubsection{Defenses against poisoning attacks}
+The defenses proposed in the literature to counter poisoning attacks are based on one of the following principles:
+• Evaluation metrics. Approaches under this type exclude or penalize a local update if it has a negative impact on an evaluation metric of the global model, e.g. its accuracy
+• Clustering updates. Approaches under this type cluster updates into two groups, where the smaller group is considered potentially malicious and, therefore, discarded in the model learning process.(MKrum)
+• Peers’ behavior. This approach assumes that malicious peers be- have similarly, meaning that their updates will be more similar to each other than those of honest peers. Consequently, updates are penalized based on their similarity.(Foolsgold)
+• Update aggregation. This approach uses robust update aggrega- tion methods that are not affected by outliers at the coordinate level, such as the median (Yin et al., 2018), the trimmed mean (Tmean) (Yin et al., 2018) or the repeated median (RMedian) (Siegel, 1982). In this way, bad updates will have little to no influence on the global model after aggregation.
+• Differential privacy (DP). Methods under the DP approach (Bag- dasaryan et al., 2020; Sun et al., 2019) clip individual update pa- rameters to a maximum threshold and add random noise to the parameters to reduce the impact of potentially poisoned updates on the aggregated global model. However, there is a trade-off between the attack mitigation brought by the added noise and the performance of the aggregated model on the main task (flame)
+
+\subsection{what is label flipping lf}
 
 
 \subsubsection{Text examples}

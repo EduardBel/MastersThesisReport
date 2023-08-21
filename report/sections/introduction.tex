@@ -1,64 +1,49 @@
 \section{Introduction}
-intro to what we are going to talk about in this section, long text
+In today's age of information and connectivity, advances in Artificial Intelligence (AI) and Machine Learning (ML) have transformed the way users interact with technology and process data.
+
+Among the emerging paradigms in the field of ML, Federated Learning (FL) appeared as an innovative approach to train AI models in a distributed and decentralized environment.
+
+In the last decade, ML has revolutionized the way in which we face complex problems in different areas, from computer vision to natural language processing. The last two years have been filled with news about promissing new paradigms of image generation, classification, chatbots, speech regonition and other AI's and, as time goes by, the applications of AI are becoming more present in our daily lives.
+
+We can find examples of applications using FL in examples such as the text predictive keyboard that we can find on our mobile phones (Google's Android Keyboard \cite{GoogleKeyboard}). We also find FL in Apple's assistant Siri voice recognition. This technology  helps distinguish wether it is the main user of the smartphone saying "Hey, Siri", or another iPhone user attempting to activate Siri on their phone. As a final example, FL is used in more complex applications such as the Tesla autonomous driving system. In all three cases, the use of FL allows the machine learning models to be trained with the users' data without them having to share their data with third parties. In the case of Google's predictive keyboard, the model is trained with the users' data locally on the device, while in the case of Tesla, the users' data is used to train the model in a distributed way among the vehicles in the Tesla fleet.
+
+Despite its advantages in terms of privacy, scalability and efficiency, FL presents significant challenges. One of them is its vulnerability to attacks: these attacks can exploit the distributed nature of the learning process, aiming to compromise integrity, confidentiality and the model's efficiency. As seen in the real-world examples, if an attacker exploited a vulnerability of the Tesla autonomous driving system by modifying the action that the car takes when recognizing a STOP sign, changing it to accelerating at full capacity, it could lead to multiple car accidents.
+
+As Federated Learning systems are increasingly integrated in real-world applications, it becomes necessary to understand and address these challenges to guarantee a successful and secure deployment of this technology.
+
+
+The GitHub repository "LFighter" \cite{LFighter_code} by Najeeb Jabreel is this thesis inspiration. It already offers a working FL simulator, where the programmer can modify the environment's parameters and obtain results of attacks against a variety of servers with different rules. With the explicit purpose of formulating and deploying attacks against FL systems to assess their robustness, this simulator serves as the foundation for the development of this thesis.
+
+
+
 \subsection{Motivation}
-motivation of the project
+Since the paper proposing FL got published in 2016???????, this new paradigm has been increasingly used over the years as we can see in \autoref{fig:popularity_FL}.
+With its increase in popularity and, its implementation in sensitive applications such as Tesla's autonomous driving system, our concerns about the security of this technology also increase.
+
+From this concern, the motivation of detecting possible vulnerabilities so they can be addressed arises. 
+
+\begin{figure}[h!]
+        % \begin{figure}[H] % Alternative positioning
+        \centering % sempre
+        \includegraphics[scale=0.2]{popularity_FL.png}
+        \caption{Published papers per year since FL was proposed. Source: \textit{Web of Science}} % sempre
+        \label{fig:popularity_FL}
+    \end{figure}
+
 \subsection{Objectives}
-what we aim to find out
+The main theoretical objective of this thesis is to explore and examine in detail the kind of attacks that can be directed towards Federated Learning systems, as well as identifying strategies and solutions to mitigate these attacks. 
 
-\subsubsection{Text examples}
-Example text example text example text example text example text example text example text
-example text example text example text example text example text example text example text
-example text example text example text example text example text example text example text
+The practical objective is to examine the effectiveness and implications of employing a sophisticated label flipping technique compared to a straightforward approach when targeting a Federated Learning system. Specifically, the focus is on evaluating whether a more strategic and intelligent choice of samples to suffer a label flipping can lead to greater success for potential attackers compared to indiscriminately flipping all labels. This investigation represents an essential step towards comprehending the vulnerabilities and potential weak points within the Federated Learning paradigm. Furthermore, we aim to provide results on some of the most used aggregation rules in Federated Learning systems.
 
-\subsection{State of the art}
-(from najeeb's)
-
-While federated learning offers several advantages over centralized learning, 
-it remains vulnerable to poisoning and privacy attacks due to its decentralized 
-approach. In fact, the distributed nature of federated learn- ing can 
-exacerbate these attacks compared to traditional centralized learn- ing
-
-\subsubsection{Poisoning attacks against FL}
-Federated learning FL is vulnerable to poisoning attacks, which aim to 
-manipulate the training process by injecting malicious data or model updates. 
-Poisoning attacks against FL systems can be broadly catego- rized into two 
-types: untargeted (Blanchard et al., 2017; Wu et al., 2020b; Fang et al., 2020) 
-and targeted 
-Both targeted and untargeted poisoning attacks can be carried out during the 
-training phase of FL, either on the local data or on the local model. Data 
-poisoning attacks involve the injection of manipulated samples into the training 
-data set, which can result in the model being trained on biased or misleading data. 
-On the other hand, model poisoning attacks involve manipulating the model 
-parameters, either directly or indirectly, during the local model training 
-process.
-
-\subsubsubsection{Untargeted poisoning attacks}
-Untargeted poisoning attacks aim to compromise the availability of the global 
-model without any specific goal or objective.
-
-\subsubsubsection{Targeted poisoning attacks}
-Targeted poisoning attacks aim at making the global model misclassify a set 
-of chosen samples to an attacker-chosen target class while minimiz- ing the 
-impact on the model performance on the main task.
-
-\subsubsubsection{Privacy attacks}
-FL prevents private data sharing, but exchanging local updates can still leak 
-sensitive information about the peers’ data to attackers
-
-Local gradients or consecutive snapshots of FL model parameters can reveal 
-unintended training data features to adversaries, as DL models remember more 
-fea- tures than needed for the main task
-
-Peers’ lo- cal updates are derived from their private training data, and the 
-learnt model represents high-level statistics of the data set it was trained 
-on. Therefore, those updates can reveal private information such as class 
-representatives, membership, and properties of the local training data. 
-Attackers can infer labels from shared gradients and even recover train- ing 
-samples without prior knowledge of the data (Zhu and Han, 2020).
-
-\subsubsubsection{Defenses against poisoning attacks}
+The research may be able to identify patterns and insights that conventional methods of attack might miss by examining the results of strategically manipulated label flipping and comparing them with the brute-force method.
+The results of this thesis will be valuable in gaining a deeper understanding of the security implications of FL and to develop more robust and secure FL systems in case the conceived attacks succeed.
 
 
+In summary, this thesis conducts a critical examination of the viability of using intelligent label flipping techniques in comparison to a brute-force approach when attacking a Federated Learning system.
 
+\subsection{Outline}
+This thesis is organized as follows:
+. IDJQWOIJIOQ
 
+. DHUIQWIHDIUQWUHI
 \pagebreak
