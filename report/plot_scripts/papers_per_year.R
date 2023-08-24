@@ -8,8 +8,8 @@ theme_set(theme_minimal())  #minimal theme
 
 # Sample data: Replace this with your actual data
 paper_data <- data.frame(
-  year = c(2016, 2017, 2018, 2019, 2020, 2021, 2022),
-  total_papers = c(30, 52, 76, 184, 398, 487, 1218)
+  year = c(2017, 2018, 2019, 2020, 2021, 2022),
+  total_papers = c(52, 76, 184, 398, 487, 1218)
 )
 
 # Create the bar chart using ggplot2
@@ -23,4 +23,4 @@ ggplot(paper_data, aes(x = factor(year), y = total_papers, fill = "Same Color"))
   scale_fill_manual(values = "forestgreen")+   # Set the color you want for all bars
   theme(legend.position = "none")
 # Save the plot as an image file (e.g., PNG)
-ggsave("bar_chart.png", width = 6, height = 4, dpi = 300)
+ggsave("../imgs/popularity_FL.png", width = 6, height = 4, dpi = 300)
