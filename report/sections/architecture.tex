@@ -1,6 +1,24 @@
 \section{Architecture}
-intro to the section, what are we going to talk about?
-\subsection{Project's architecture}
+In this section dedicated to the architecture of the thesis, we will delve into the organizational framework of the foundational code derived from the GitHub repository \cite{LFighter_code}. We will discuss the structural elements that constitute the basis of our work, elucidating the positioning of the newly crafted functions that serve the thesis purpose. The goal is to demonstrate how the intricate nature of a typical FL environment is mirrored in the architecture of this implementation by drawing comparisons to real-world FL scenarios and the base code structure.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Base code structure}
+The base code is implemented in Python and structured as follows:
+\begin{itemize}
+        \item Python notebooks: There are three notebooks, one for each dataset used in the developer's experiments. The included datasets are:
+        \begin{itemize}
+                \item MNIST: This dataset contains samples of handwritten digits. It consists of a training set of 60,000 samples, and a test set of 10,000 samples. Each sample is a 28x28 bit grayscale image, associated with a label from 10 classes. The task is to classify the images into their respective digit classes. The dataset is available at \cite{MNIST}.
+                \item CIFAR-10: This dataset contains 60,000 32x32 bit color images in 10 different classes. The task is to classify the images into their respective class. The dataset is available at \cite{CIFAR10}.
+                \item IMDB: This dataset contains 50,000 movie reviews from the Internet Movie Database. The task is to classify the reviews into positive or negative sentiment. The dataset is available at \cite{IMDB}.
+        \end{itemize}
+\end{itemize}
+
+
+
+
+
+
+
 architecture of Najeeb's code, where are my functions?
 scheme on how the system (server, epochs, peers, peer rounds) works\\
 
@@ -21,18 +39,6 @@ loads to the server.
 The federated averaging algorithm (FedAvg, McMa- han et al., 2017a) is usually employed to perform the aggregation
 Note that FedAvg is the standard way to aggregate updates in FL and is
 not meant to counter security attacks
-
-
-\subsection{Security attacks on Federated Learning}
-blabla
-
-\subsubsection{Example subsubtitle}
-
-
-\subsubsection{Text examples}
-Example text example text example text example text example text example text example text
-example text example text example text example text example text example text example text
-example text example text example text example text example text example text example text
 
 
 \pagebreak
