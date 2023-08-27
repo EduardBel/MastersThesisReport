@@ -106,7 +106,7 @@ The strategies for defending against poisoning attacks that have been suggested 
 \end{itemize}
 
 The strategies implemented in the base code that is used in this thesis \cite{LFighter_code} are:
-\begin{itemize}
+\begin{itemize} \label{sec:aggregation_methods}
         \item Federated Averaging (FedAvg) \cite{FederatedLearningPaper}: The standard aggregation method used in FL. It works by aggregating the local updates by averaging them. This method is not designed to counter poisoning attacks.
         \item Median \cite{MedianPaper}: This strategy involves collecting local model updates from participating devices and determining the median value for each parameter across these updates. After sorting the parameter values, the median strategy selects the middle value while ignoring extreme outliers. Since a single adversarial device cannot significantly impact the final aggregated model, this method makes the median aggregation resistant to malicious or inaccurate updates.
         \item Trimmed Mean (TMean) \cite{MedianPaper}: This method decreases the impact of outliers by excluding a certain percentage of extreme values. By reducing the impact of potentially malicious updates or noisy data from individual devices, this strategy improves the robustness of the aggregation process.
