@@ -79,7 +79,7 @@ In a label-flipping attack, attackers employ their local dataset to carry out th
 Consider a scenario for a medical diagnosis where a FL model is trained to distinguish between samples that are healthy and those that are diseased. A label-flipping attack could be carried out by an attacker by changing the labels of some healthy samples to read "diseased." The model then gains knowledge from these falsified data, misclassifying real healthy samples as diseased during inference. In real-world applications, such as incorrect diagnoses or treatment recommendations, such a scenario might have serious consequences. 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsubsection{Defenses against poisoning attacks}
+\subsubsection{Defenses against poisoning attacks}\label{sec:defenses}
 The way for a malicious actor to compromise the integrity of the learning process is, as seen in the previous sections \ref{sec:untargeted} and \ref{sec:targeted}, by injecting poisoned data on local model updates. The attacker must also overcome the combined influence of benign clients during the aggregation process in order ensure a successful attack. This can be done in a number of ways, including:
 \begin{itemize}
         \item Applying scaling factors to boost the impact of their own updates.
