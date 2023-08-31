@@ -1,14 +1,14 @@
 \section{Background} \label{sec:background}
 In this section, we establish the essential groundwork for comprehending the intricacies of model poisoning through label flipping on FL. We begin by presenting important ideas required to understand its security landscape.
 
-We examine the state of the art with regard to adversarial attacks and defence mechanisms to get a practical perspective on security challenges. 
+We examine the state of the art regarding adversarial attacks and defence mechanisms to get a practical perspective on security challenges. 
 By exploring the landscape of model poisoning attacks, we will delve into attacker tactics that manipulate model updates, potentially compromising the integrity of federated learning
 
 Finally, we explore the different aggregation techniques that are going to be employed on the practical side of this thesis.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Deep Neural Networks}
-Deep Neural Networks (DNNs) are a specific type of Machine Learnig (ML) algorithms characterized by their incorporation of multiple hidden layers situated between the input and output layers. These hidden layers allow DNNs to acquire intricate and refined data representations during training. This inherent capability enhances their performance across diverse domains, encompassing healthcare \cite{BreastCancerComputerVision}, game playing, speech recognition, analysing molecular structures and predicting chemical properties, recommendation systems, and many others.
+Deep Neural Networks (DNNs) are a specific type of Machine Learning (ML) algorithms characterized by their incorporation of multiple hidden layers situated between the input and output layers. These hidden layers allow DNNs to acquire intricate and refined data representations during training. This inherent capability enhances their performance across diverse domains, encompassing healthcare \cite{BreastCancerComputerVision}, game playing, speech recognition, analysing molecular structures and predicting chemical properties, recommendation systems, and many others.
 
 The DNN first creates a map of virtual neurons and, assigns to the connections linking them initial random "weights", or numerical values. These weights interact with the inputs to produce an output that can range from 0 to 1. An algorithm intervenes to adjust these weights if the network is unable to recognise a particular pattern with sufficient accuracy. Through this procedure, the algorithm can gradually increase the influence of specific parameters while iteratively determining the most effective mathematical operations necessary to efficiently process the input data. \autoref{fig:DNN_example} shows a representation of a DNN that classifies images into classes of animals.
 
@@ -31,7 +31,7 @@ The FL training procedure is an excellent representation of a distributed and pr
 
 Due to its collaborative and iterative structure, FL has special qualities that set it apart from conventional centralised learning paradigms. The training dynamics are made more complex by the presence of device-specific data distributions and a variety of client computational capabilities. Therefore, FL encompasses challenges that go beyond those of conventional ML, calling for the investigation of reliable communication protocols, secure aggregation techniques, and methods for dealing with potential adversarial threats.
 
-Compared to conventional centralised ML approaches, FL offers a number of compelling advantages:
+Compared to conventional centralised ML approaches, FL offers several compelling advantages:
 
 \begin{itemize}
         \item The training computational load is effectively distributed across the participating peers' devices, which is particularly important for large-scale ML tasks.
@@ -87,7 +87,7 @@ The way for a malicious actor to compromise the integrity of the learning proces
         \item Applying a combination of the aforementioned strategies.
 \end{itemize}
 
-A useful strategy to prevent attacks of this nature would be, given that the server possesses the some unique identifier (ID) of peers participating in the current training round, contrasting the model's accuracy results with those of prior rounds. In rounds of noteworthy disparities, the algorithm could store the IDs of participants from that specific round. In subsequent rounds marked by discrepancies, this stored list could be cross-referenced with the current round IDs, allowing for the removal of IDs not actively participating in the ongoing round. This strategy would eventually facilitate the detection of a single malicious peer. Notably, this identification does not require to ban the detected malicious peer, as this might lead her to create a new account to evade detection.
+A useful strategy to prevent attacks of this nature would be, given that the server possesses the unique identifier (ID) of peers participating in the current training round, contrasting the model's accuracy results with those of prior rounds. In rounds of noteworthy disparities, the algorithm could store the IDs of participants from that specific round. In subsequent rounds marked by discrepancies, this stored list could be cross-referenced with the current round IDs, allowing for the removal of IDs not actively participating in the ongoing round. This strategy would eventually facilitate the detection of a single malicious peer. Notably, this identification does not require to ban the detected malicious peer, as this might lead her to create a new account to evade detection.
 For scenarios involving multiple malicious peers, an iterative process would take place, persisting until the identification of additional attackers is achieved. To establish a trustable first global round for future comparisons, the server could initiate this round with the assurance of a lack of attackers at the chosen peers set.
 
 
@@ -100,7 +100,7 @@ The strategies for defending against poisoning attacks that have been suggested 
 \begin{itemize}
         \item Update Aggregation: In this method, local model updates are aggregated using methods that are robust to outliers. The impact of inaccurate updates on the final global model is reduced by using aggregation techniques that are resilient to extreme values. This ensures that the effects of potentially harmful updates are minimised, allowing to produce an aggregated model that is more reliable and accurate.
         \item Evaluation Metrics: The central idea of this approach is to evaluate the quality of local updates using evaluation metrics connected to the global model. The model aggregation process may exclude or penalise a local update if it negatively impacts a certain metric, such as accuracy.
-        \item Update Clustering: In a different approach, updates are split into two clusters, with the smaller cluster being marked as potentially malicious and ignored during model learning. This idea, helps filter out potentially harmful updates.
+        \item Update Clustering: In a different approach, updates are split into two clusters, with the smaller cluster being marked as potentially malicious and ignored during model learning. This idea helps filter out potentially harmful updates.
         \item Peers' Behaviour: This approach makes the assumption that malicious peers behave similarly, which makes their updates more similar than those of honest peers. In order to reduce the impact of potentially harmful updates, penalization is therefore based on the similarity between updates.
         \item Differential Privacy (DP): Using the DP method, each update parameter is altered by being clipped to a maximum threshold and then introducing random noise. As a result, there is a compromise between the ability of the aggregated model to perform its main task and the mitigation of potential attacks through added noise.
 \end{itemize}

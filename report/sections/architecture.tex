@@ -1,4 +1,4 @@
-\section{Architecture}
+\section{Architecture}\label{sec:architecture}
 In this section dedicated to the architecture of the thesis, we will delve into the organizational framework of the foundational code derived from the GitHub repository \cite{LFighter_code}. We will discuss the structural elements that constitute the basis of our work, elucidating the positioning of the newly crafted code that serves the thesis purpose. The goal is to demonstrate how the intricate nature of a typical FL environment is mirrored in the architecture of this implementation by drawing comparisons to real-world FL scenarios and the base code structure.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -8,11 +8,11 @@ The base code is implemented in Python and structured as follows:
         \item Python notebooks (.ipynb files): There are three notebooks, one for each dataset used in the developer's experiments. The included datasets are:
         \begin{itemize}
                 \item MNIST \cite{MNIST}: This dataset contains samples of handwritten digits. It consists of a training set of 60,000 samples, and a test set of 10,000 samples. Each sample is a 28x28 bit grayscale image, associated with a label from 10 classes. The task is to classify the images into their respective digit classes.
-                \item CIFAR-10 \cite{CIFAR10}: This dataset contains 60,000 32x32 bit color images in 10 different classes. These classes encompass a diverse array of objects, including but not limited to animals, vehicles, and everyday items. The objective underlying this dataset is to accurately classify each image into its designated class.
+                \item CIFAR-10 \cite{CIFAR10}: This dataset contains 60,000 32x32 bit colour images in 10 different classes. These classes encompass a diverse array of objects, including but not limited to animals, vehicles, and everyday items. The objective underlying this dataset is to accurately classify each image into its designated class.
                 \item IMDB \cite{IMDB}: This dataset contains 50,000 movie reviews from the Internet Movie Database. The task is to classify the reviews into positive or negative sentiment.
         \end{itemize}
         The notebooks are used to run the experiments using the different aggregation functions commented in section \ref{sec:aggregation_methods} at user's will. This is done by importing the libraries and defining global variables in one executable section, and arranging the tests with different aggregation methods into separate sections. These notebooks are also used to visualize the results and checking the process.
-        \item \textit{experiment\_federated.py}: This python file contains a sole function (\textit{run\_exp()}) that is called by one of the Python notebooks whenever we wish to start a new experiment with an aggregation function. This function merely prints by console information concerning the parameters used in the current experiment, initializes the FL environment and, calls a more complex function.
+        \item \textit{experiment\_federated.py}: This python file contains a sole function (\textit{run\_exp()}) that is called by one of the Python notebooks whenever we wish to start a new experiment with an aggregation function. This function merely prints by console information concerning the parameters used in the current experiment, initializes the FL environment, and calls a more complex function.
         \item \textit{environment\_federated.py}: This is the most complex file in the base code. It contains the \textit{run\_experiment()} function, which is the one called by the previous file. This function is responsible for the execution of the experiment, and it is where the whole FL setting is initialized and simulated. The file is divided into two main classes:
         \begin{itemize}
                 \item Peer: When a Peer object is created, the Peer class initializes all its variables, such as the peer's ID, its local data, etc. This class contains a single function, named \textit{participant\_update()}, which is called when a peer has to update its local model. This function is responsible for the training of the local model, and it is where, depending on the value of the parameter "\textit{attack\_type}", the execution of the attack is determined. The function returns the updated local model.
@@ -43,7 +43,7 @@ This is because it is the single point of entry for the execution of the attack,
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Real-world FL vs. base code}
 In this section, we state the similarities between a real FL system and the base code described in the previous section, \ref{sec:base_code}. As a navigational aid as we navigate through the details of these two distinct environments, \autoref{fig:FL_diagram} provides a diagram of an actual FL scenario to further illuminate this comparison. 
-\begin{figure}[h!]
+\begin{figure}[h]
         % \begin{figure}[H] % Alternative positioning
         \centering % sempre
         \includegraphics[scale=0.3]{FL_diagram.png}
@@ -58,7 +58,7 @@ Next, the steps comprising the diagram are briefly outlined:
         \item The clients send the updated models to the server. This step is difficult to locate in the base code, as it is not explicitly stated. However, it is possible to infer that the updated models are sent to the server in the \textit{run\_experiment()} function, where the local models are located in table structures managed by the code.
         \item The server aggregates the models and sends the updated global model to the clients. This step is mirrored in the base code at the series of if statements mentioned in the previous section, \ref{sec:base_code}, which are responsible for the aggregation of the local models.
 \end{enumerate}
-The process is repeated until the global model converges. This step is mirrored in the loop defined in the \textit{run\_experiment()} function, which is dependant on the value of the parameter "\textit{global\_rounds}".
+The process is repeated until the global model converges. This step is mirrored in the loop defined in the \textit{run\_experiment()} function, which is dependent on the value of the parameter "\textit{global\_rounds}".
 
 
 \pagebreak
