@@ -1,11 +1,31 @@
+\newpage
 \section{Conclusions}\label{sec:conclusions}
-intro to the section, what are we going to talk about?
-Més enllà (i això pot anar a la secció de conclusions i treball futur), es miraria com afecten els atacs en el cas non-iid.
-\subsection{Project's architecture}
-architecture of Najeeb's code, where are my functions?
-scheme on how the system (server, epochs, peers, peer rounds) works
+In this study, we presented a comprehensive analysis of various label flipping algorithms' performance within the context of Federated Learning. 
+The proposed hypotheses to create a more sophisticated label flipping attack are the following:
+\begin{itemize}
+        \item Entropy-based label flipping: This attack is based on the idea of flipping the labels of those samples that have a high entropy among classification classes. Thus, being more difficult to classify.
+        \item Closeness-based label flipping: The idea behind this attack is flipping the labels of those samples that have similar possibilities to be classified as either the source or the target class.
+        \item Adaptive label flipping: The hypothesis of this attack is that varying the number of samples that are flipped in each global round, the attack will be more difficult to detect. The logic behind this idea is that, as the global model is refined, lowering the number of samples that are flipped will make the attack more difficult to detect. 
+\end{itemize}
+
+We explored how these hypotheses perform against the performance of a standard label flipping attack in the context of their impact on different aggregation methods.
+
+Label flipping attacks pose a significant threat to the integrity of Machine Learning models. Our findings demonstrate that certain algorithms, such as Foolsgold\cite{FoolsGoldPaper}, Tolpegin\cite{TolpeginPaper} and LFighter\cite{LFighter_paper}, exhibit robustness against label flipping attacks, effectively mitigating their impact on model accuracy (LFighter being the one defence which maintains the lower Attack Success Rate and thus, being the most effective one analysed). These algorithms leverage the collective intelligence of the participating devices in the Federated Learning framework to adaptively adjust model parameters and effectively counteract the adversarial manipulation of labels.
+
+...\\
+findings on the experiments for our hypotheses... Relate your discussion back to the objectives and questions you raised
+in the Introduction section
+
+
+in conclusion... our attacks are more effective against lfighter which is a super complex agg method?
+estaria guai refrescar que fan lfighter, tolpegin i foolsgold per protegir perquè entropy a 10 obté millors resultats que std
+...\\
 
 \subsection{Future work}
-non-iid seria mes chetao per un atac com s'ha comentat a impl/modificacions(4.1)
+It would be interesting to assess the performance of the evaluations proposed in this section using more powerful equipment. This would allow to perform more tests in a shorter period of time, thus allowing to perform more extensive evaluations of the algorithms' performance.
 
+Future research directions could explore different approaches to sophisticated label flipping attacks and performing more extensive evaluations of their performance.
+
+Performing tests using a non-IID data distribution would offer better insights about the performance of the algorithms in a more realistic scenario.
+This is because, as has been stated before, a real-world scenario would not have a perfectly balanced dataset. Thus, the attacks should perform better or, at least, be more difficult to detect by the server in an non-IID scenario.
 \pagebreak

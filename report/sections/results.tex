@@ -19,7 +19,7 @@ The first step is to evaluate which are the results for the baseline model\footn
 
 \subsubsection{MNIST results with an attacker's ratio of 10\%}
 The first experiment is performed for the standard label flipping attack. The results are shown in \autoref{tab:standard_mnist_10}. 
-As it can be seen, we don't perform all the possible experiments, since at this point of the project we are interested in evaluating the performance of our hypotheses with the specified attacker's ratio. For future reference, \autoref{fig:confusion_reference} shows the confusion matrix for the baseline model, where there have been no attacks and the model is almost perfectly trained.
+As it can be seen, we do not perform all the possible experiments, since at this point of the project we are interested in evaluating the performance of our hypotheses with the specified attacker's ratio. For future reference, \autoref{fig:confusion_reference} shows the confusion matrix for the baseline model, where there have been no attacks and the model is almost perfectly trained.
 \begin{table}[h]
         \centering
         \begin{tabular}{|c|c|c|c|c|c|}
@@ -198,7 +198,7 @@ This attack is the one selected to represent entropy in experiments with lower a
     \end{table}
     
 
-The results for the entropy-based label flipping attack, which flips the 75\% highest entropies are shown in \autoref{tab:entropy_cifar_30_top_75}. We can observe higher results when compared with the strategy flipping 50\% of the samples. Given that the results don't improve by a huge factor, we will not use this strategy in the experiments with lower attacker's ratio since the amount of extra labels flipped is considered to be too high.
+The results for the entropy-based label flipping attack, which flips the 75\% highest entropies are shown in \autoref{tab:entropy_cifar_30_top_75}. We can observe higher results when compared with the strategy flipping 50\% of the samples. Given that the results do not improve by a huge factor, we will not use this strategy in the experiments with lower attacker's ratio since the amount of extra labels flipped is considered to be too high.
 
 \begin{table}[h!]
         \centering
@@ -575,13 +575,13 @@ The obtained results for the CIFAR-10 dataset with an attacker's ratio of 20\% a
                 \hline
                 & FedAvg (NA) & FedAvg & Median & TMean & MKrum & Foolsgold & Tolpegin & FLAME & LFighter \\
                 \hline
-                TE & 1.1 & 0.8412 & 0.8204 & 0.817 & 0.9174 & 0.8602 & 0.8851 & 1.0738 & 0.8552 \\
+                TE & 0.8058 & 0.8412 & 0.8204 & 0.817 & 0.9174 & 0.8602 & 0.8851 & 1.0738 & 0.8552 \\
                 \hline
-                All-Acc & 1.1 & 76.22 & 75.46 & 75.82 & 75.3 & 75.75 & 75.47 & 73.95 & 75.52 \\
+                All-Acc & 76.56 & 76.22 & 75.46 & 75.82 & 75.3 & 75.75 & 75.47 & 73.95 & 75.52 \\
                 \hline
-                Src-Acc & 1.1 & 44.8 & 50.2 & 44.3 & 39.1 & 59.8 & 63.5 & 33.9 & 62.8 \\
+                Src-Acc & 65.6 & 44.8 & 50.2 & 44.3 & 39.1 & 59.8 & 63.5 & 33.9 & 62.8 \\
                 \hline
-                ASR & 1.1 & 32.6 & 28.4 & 32.4 & 37.8 & 18.3 & 14.2 & 41.6 & 15.2 \\
+                ASR & 14.7 & 32.6 & 28.4 & 32.4 & 37.8 & 18.3 & 14.2 & 41.6 & 15.2 \\
                 \hline
         \end{tabular}
         \end{adjustbox}
@@ -641,7 +641,9 @@ The results obtained for the entropy-based label flipping attack, which flips th
 As can be seen, when lowering the attacker's ratio, the results for the standard label flipping attack decrease much more than the results for the proposed attacks, which decrease only a few points. Probably, the reason why this happens is because, with a smaller attacker's ratio, the aggregation functions can better detect the malevolent peers that are flipping all the labels than the ones that are flipping only a few of them, which are stealthier.
 
 \subsubsection{CIFAR-10 results with an attacker's ratio of 10\%}
-standard
+When lowering the attacker's ratio to 10\%, we approach to a real-world situation where, there are millions of users participating in the FL system. It is not realistic to think of a scenario where, with that many users, even 10\% of them are attackers.
+
+\autoref{tab:standard_cifar_10} shows the results obtained using the standard label flipping attack with an attacker's ratio of 10\%.
 \begin{table}[h!]
         \centering
         \small
@@ -650,11 +652,11 @@ standard
                 \hline
                 & FedAvg (NA) & FedAvg & Median & TMean & MKrum & Foolsgold & Tolpegin & FLAME & LFighter \\
                 \hline
-                TE & 0.8194 & 0.8081 & 0.7828 & 0.7996 & 0.8545 & 0.8332 & 0.874 & 0.991 & 0.8581 \\
+                TE & 0.8058 & 0.8081 & 0.7828 & 0.7996 & 0.8545 & 0.8332 & 0.874 & 0.991 & 0.8581 \\
                 \hline
-                All-Acc & 76.52 & 77.05 & 75.98 & 76.3 & 76.51 & 76.56 & 75.87 & 75.28 & 76.05 \\
+                All-Acc & 76.56 & 77.05 & 75.98 & 76.3 & 76.51 & 76.56 & 75.87 & 75.28 & 76.05 \\
                 \hline
-                Src-Acc & 64.4 & 51.8 & 54.9 & 55.8 & 53.4 & 66.5 & 63.9 & 49.2 & 63.8 \\
+                Src-Acc & 65.6 & 51.8 & 54.9 & 55.8 & 53.4 & 66.5 & 63.9 & 49.2 & 63.8 \\
                 \hline
                 ASR & 14.7 & 21.7 & 23.1 & 21.5 & 24.7 & 13.9 & 13.4 & 27.8 & 13.7 \\
                 \hline
@@ -663,7 +665,77 @@ standard
         \caption{Standard label flipping, attacker's ratio of 10\%}
         \label{tab:standard_cifar_10}
     \end{table}
-entropy
-closeness
 
-\newpage
+
+The results obtained for the entropy-based label flipping attack, which flips the 50\% highest entropies are shown in \autoref{tab:entropy_cifar_10_top_50}.
+\begin{table}[h!]
+    \centering
+    \small
+    \begin{adjustbox}{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+        \hline
+        & FedAvg & Median & TMean & MKrum & Foolsgold & Tolpegin & FLAME & LFighter \\
+        \hline
+        TE & 0.8277 & 0.7724 & 0.8035 & 0.8533 & 0.826 & 0.8196 & 1.0331 & 0.8319 \\
+        \hline
+        All-Acc & 76.78 & 76.17 & 76.65 & 76.13 & 76.46 & 76.69 & 73.07 & 76.02 \\
+        \hline
+        Src-Acc & 61.8 & 62.3 & 63.1 & 62.9 & 60.3 & 61.7 & 56.2 & 61.8 \\
+        \hline
+        ASR & 17.8 & 18.6 & 17.4 & 17.7 & 17.6 & 18.4 & 20.4 & 16.8 \\
+        \hline
+    \end{tabular}
+    \end{adjustbox}
+    \caption{Entropy-based label flipping, attacker's ratio of 10\%}
+    \label{tab:entropy_cifar_10_top_50}
+\end{table}
+
+
+Finally, \autoref{tab:closeness_cifar_10} shows the results obtained for the closeness-based label flipping attack, which flips the 50\% closest images.
+
+\begin{table}[h!]
+    \centering
+    \small
+    \begin{adjustbox}{center}
+    \begin{tabular}{|c|c|c|c|c|c|c|c|c|}
+        \hline
+        & FedAvg & Median & TMean & MKrum & Foolsgold & Tolpegin & FLAME & LFighter \\
+        \hline
+        TE & 0.816 & 0.8238 & 0.787 & 0.8378 & 0.8141 & 0.8409 & 0.9718 & 0.8166 \\
+        \hline
+        All-Acc & 76.82 & 76.24 & 76.99 & 76.88 & 76.59 & 76.66 & 76.05 & 76.45 \\
+        \hline
+        Src-Acc & 63.6 & 62.4 & 61.3 & 60.3 & 61.1 & 63.2 & 57.6 & 63.7 \\
+        \hline
+        ASR & 17.5 & 18.4 & 19.1 & 19.4 & 18.5 & 16.9 & 22.0 & 14.9 \\
+        \hline
+    \end{tabular}
+    \end{adjustbox}
+    \caption{Closeness-based label flipping, attacker's ratio of 10\%}
+    \label{tab:closeness_cifar_10}
+\end{table}
+
+As can be seen in \autoref{fig:ASR_std}, \autoref{fig:ASR_ent}, and \autoref{fig:ASR_clos} when lowering the attacker's ratio to a 10\%, the results for all kinds of label flipping drop. It is important to note that, when comparing the drop of the results for the standard label flipping attack against the proposed attacks, the drop from 30\% to 10\% attacker's ratio is much more significant for the standard label flipping attack. This means than even though the proposed attacks do not obtain such a high ASR as the standard label flipping attack, they keep a higher stability when lowering the attacker's ratio. As commented before, a real-world scenario is not likely to have such a high attacker's ratio among the peers. Thus, our hypotheses perform similarly to the standard label flipping attack in a situation resembling a real-world scenario, while flipping half of the labels.
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.88]{ASR_std.png}
+    \caption{ASR for standard label flipping}
+    \label{fig:ASR_std}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.88]{ASR_ent.png}
+    \caption{ASR for Entropy-based label flipping}
+    \label{fig:ASR_ent}
+\end{figure}
+
+\begin{figure}[h!]
+    \centering
+    \includegraphics[scale=0.88]{ASR_clos.png}
+    \caption{ASR for Closeness-based label flipping}
+    \label{fig:ASR_clos}
+\end{figure}
+ 
+\pagebreak
