@@ -69,7 +69,7 @@ The obtained results are similar to the results for the standard label flipping 
 
 \subsubsection{MNIST results with an attacker's ratio of 40\%}
 
-Since the results for an attacker's ratio of 10\% are not very promising, we decided to increase the attacker's ratio to 40\% to see if the results improve.
+Since the results for an attacker's ratio of 10\% are not very promising, we decided to increase it to 40\% to see if the results improve.
 \autoref{tab:standard_mnist_40} shows the results obtained for the standard label flipping attack and an attacker's ratio of 40\%. Note that for this experiment, the baseline is not tested, and only two aggregation methods are evaluated.
 As seen in the table, the ASR improves for both aggregation methods.
 \begin{table}[h!]
@@ -112,14 +112,15 @@ The results are not promising when compared to the results for the standard labe
         \caption{MNIST. Entropy-based label flipping, top 25\% entropy, attacker's ratio of 40\%}
         \label{tab:entropy_mnist_40_top_25}
     \end{table}
-We first began using the MNIST dataset for our experiments because it is the most common dataset used in the literature. However, we quickly realized that the results were not very interesting. The reason for this is that the MNIST dataset is too simple. The model is able to achieve a very high accuracy, and the label flipping attacks are not able to reduce it significantly. Therefore, we decided to use the CIFAR-10 dataset instead. This dataset is more complex, and the model is not able to achieve such a high accuracy. This means that the label flipping attacks are able to reduce the accuracy significantly. In the following sections, we present the results obtained with the MNIST dataset along with the ones obtained with the CIFAR-10 dataset. The reason behind this is to show the difference between both datasets. However, we focus on the results obtained with the CIFAR-10 dataset because they are more interesting. Our aim will be to flip the labels of the source class (dog) to the target class label (cat). 
+We first began using the MNIST dataset for our experiments because it is the most common dataset used in the literature. However, we quickly realized that the results were not very interesting. The reason for this is that the MNIST dataset is too simple. The model is able to achieve a very high accuracy, and the label flipping attacks are not able to reduce it significantly. Therefore, we decided to use the CIFAR-10 dataset instead. This dataset is more complex, and the model is not able to achieve such a high accuracy. This means that the label flipping attacks are able to reduce the accuracy significantly. 
     
 
 \subsection{Results for the CIFAR-10 dataset}
 Since the results obtained with the MNIST dataset are not promising, we decided to evaluate the performance of the proposed strategies with the CIFAR-10 dataset.
 MNIST offers a relatively easy problem to solve, since the images are very simple. This is why the aggregation methods are able to achieve a very high accuracy.
 
-The aim for these experiments is finding which attack obtains the best results in order to evaluate the performance of the proposed strategies on lower attacker's ratio. This is why, for some strategies' modifications, we only evaluate the performance for some aggregation methods.
+Our aim will be to flip the labels of the source class (dog) to the target class label (cat). 
+The purpose of these experiments is finding which attack obtains the best results in order to evaluate the performance of the proposed strategies on lower attacker's ratio. This is why, for some strategies' modifications, we only evaluate the performance for some aggregation methods.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{CIFAR-10 results with an attacker's ratio of 30\%}\label{sec:cifar_30}
@@ -564,7 +565,7 @@ Based on the obtained results, the selection of the best attack for each strateg
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsubsection{CIFAR-10 results with an attacker's ratio of 20\%}
 As seen in the results of Section \ref{sec:cifar_30}, closeness-based label flipping performs slightly better than entropy-based label flipping. In this section and the following one, we will continue comparing the results for our main hypotheses to test if this is a mere coincidence or turns out that closeness is a better approach than entropy when referring to label flipping attacks in FL.
-We will also verify if the difference between the standard method and ours varies or it keept outperforming them.
+We will also verify if the difference between the standard method and ours varies or it keeps outperforming them.
 
 The obtained results for the CIFAR-10 dataset with an attacker's ratio of 20\% are shown in this section.
 \autoref{tab:standard_cifar_20} shows the results obtained for the standard label flipping attack. As can be seen, the ASR for the standard label flipping attack drops when lowering the attacker's ratio. This is normal since there are less attackers poisoning their local models.
@@ -693,7 +694,7 @@ The results obtained for the entropy-based label flipping attack, which flips th
 \end{table}
 
 
-Finally, \autoref{tab:closeness_cifar_10} shows the results obtained for the closeness-based label flipping attack, which flips the 50\% closest images. Our second hypothesis is also keeping a similar ASR when lowering the attacker's ratio. The closeness-based solution is no longer outperforming the entropy-based solution in that many aggregation methods.
+Finally, \autoref{tab:closeness_cifar_10} shows the results obtained for the closeness-based label flipping attack, which flips the 50\% closest images. Our second hypothesis is also keeping a similar ASR when lowering the attacker's ratio. The closeness-based solution is no longer outperforming the entropy-based solution in many aggregation methods.
 
 \begin{table}[h!]
     \centering
@@ -717,7 +718,7 @@ Finally, \autoref{tab:closeness_cifar_10} shows the results obtained for the clo
     \label{tab:closeness_cifar_10}
 \end{table}
 
-As can be seen in \autoref{fig:ASR_std}, \autoref{fig:ASR_ent}, and \autoref{fig:ASR_clos} when lowering the attacker's ratio to a 10\%, the results for all kinds of label flipping drop. It is important to note that, when comparing the drop of the results for the standard label flipping attack against the proposed attacks, the drop from 30\% to 10\% attacker's ratio is much more significant for the standard label flipping attack. This means than even though the proposed attacks do not obtain such a high ASR as the standard label flipping attack, they keep a higher stability when lowering the attacker's ratio. As commented before, a real-world scenario is not likely to have such a high attacker's ratio among the peers. Thus, our hypotheses perform similarly to the standard label flipping attack in a situation resembling a real-world scenario, while flipping half of the labels.
+As can be seen in \autoref{fig:ASR_std}, \autoref{fig:ASR_ent}, and \autoref{fig:ASR_clos} when lowering the attacker's ratio to a 10\%, the ASR for all kinds of label flipping drop. It is important to note that, when comparing the drop of the results for the standard label flipping attack against the proposed attacks, the drop from 30\% to 10\% attacker's ratio is much more significant for the standard label flipping attack. This means than even though the proposed attacks do not obtain such a high ASR as the standard label flipping attack, they keep a higher stability when lowering the attacker's ratio. As commented before, a real-world scenario is not likely to have such a high attacker's ratio among the peers. Thus, our hypotheses perform similarly to the standard label flipping attack in a situation resembling a real-world scenario, while flipping half of the labels.
 
 \begin{figure}[h!]
     \centering
