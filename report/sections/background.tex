@@ -8,12 +8,20 @@ Finally, we explore the different aggregation techniques that are going to be em
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Deep Neural Networks}
-Deep Neural Networks (DNNs) are a specific type of Machine Learning (ML) algorithms characterized by their incorporation of multiple hidden layers situated between the input and output layers. These hidden layers allow DNNs to acquire intricate and refined data representations during training. This inherent capability enhances their performance across diverse domains, encompassing healthcare \cite{BreastCancerComputerVision}, game playing, speech recognition, analysing molecular structures and predicting chemical properties, recommendation systems, and many others.
+Deep Neural Networks (DNNs) are a specific type of ML algorithms, similar to Artificial Neural Networks, but characterized by their incorporation of multiple hidden layers situated between the input and output layers. These hidden layers allow DNNs to acquire intricate and refined data representations during training.
+% Cita exemples d'ús
+This inherent capability enhances their performance across diverse domains, encompassing healthcare \cite{BreastCancerComputerVision}, game playing \cite{gamePlaying}, speech recognition \cite{speechRecognition}, analysis of molecular structures and predicting chemical properties \cite{MolecularStructure}, and recommendation systems \cite{DNNRecommendation}, among many others.
 
-The DNN first creates a map of virtual neurons and, assigns to the connections linking them initial random "weights", or numerical values. These weights interact with the inputs to produce an output that can range from 0 to 1. An algorithm intervenes to adjust these weights if the network is unable to recognise a particular pattern with sufficient accuracy. Through this procedure, the algorithm can gradually increase the influence of specific parameters while iteratively determining the most effective mathematical operations necessary to efficiently process the input data. \autoref{fig:DNN_example} shows a representation of a DNN that classifies images into classes of animals.
+% Reescrit això, faltaria alguna referencia a algún llibre o curs
+Formally, a DNN applies a series of nested non-linear operations between the inputs and a collection of tunable parameters, called weights and biases. Given an input vector $x$, a weight vector $w$, and a bias vector $b$, a neuron computes $o=\sigma(\sum_i x_i w_i + b)$, where $\sigma(\cdot)$ is a non-linear function, such as the sigmoid function, the hyperbolic tangent function, or the Rectified Linear Unit (which equals 0 for negative inputs and the identity for non-negative inputs).
+During training, an optimization algorithm, such as stochastic gradient descent, is used to minimize a loss function, that is, a function that scores how close are the predictions of the model with respect to the expected ones.
+These optimization algorithms alternate forward and backward passes in which the loss function is computed on some training examples and the expected results, the derivative of the loss function with respect to the model parameters is computed, and the weights and biases are adjusted according to the computed gradients and a configurable learning rate. These forward and backward passes are repeated until the model converges or reaches an acceptable level of loss or predictive power. \autoref{fig:DNN_example} shows a representation of a DNN that classifies images into classes of animals.
+
+Specialized architectures, such as convolutional neural networks, recurrent neural networks, or transformers use special layers to solve particular problems, such as image recognition, time series analysis, or natural language processing.
+
+% The DNN first creates a map of artificial neurons and, assigns to the connections linking them initial random "weights", or numerical values. These weights interact with the inputs to produce an output that can range from 0 to 1. An algorithm intervenes to adjust these weights if the network is unable to recognise a particular pattern with sufficient accuracy. Through this procedure, the algorithm can gradually increase the influence of specific parameters while iteratively determining the most effective mathematical operations necessary to efficiently process the input data. \autoref{fig:DNN_example} shows a representation of a DNN that classifies images into classes of animals.
 
 For instance, a DNN trained to recognise plant species will examine the supplied image and determine whether the plant in the image is a member of a particular species. The user can then evaluate the outcomes and select the probabilities that the network should present (those that are higher than a certain threshold, etc.), resulting in the suggested label.
-
 \begin{figure}[h!]
         % \begin{figure}[H] % Alternative positioning
         \centering % sempre
@@ -42,7 +50,7 @@ Compared to conventional centralised ML approaches, FL offers several compelling
 Due to the latter advantage, FL is particularly suitable for scenarios involving sensitive data, such as those in location-based services, voice assistants, healthcare,  facial recognition, and voice assistants. Additionally, FL is extremely useful in scenarios where data processing and collection are limited by privacy protection laws like the General Data Protection Regulation (GDPR \cite{GDPR}) by the European Commission or the Spanish "\textit{Ley Orgánica de Protección de Datos}" (LOPD).
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\subsection{State of the art}\label{sec:state_of_the_art}
+\subsection{Privacy and security issues of Federated Learning}\label{sec:state_of_the_art}
 Despite the numerous advantages that FL offers over centralised learning, the decentralised nature of this approach also creates vulnerabilities to security and privacy threats. In fact, the distributed architecture that empowers FL, can increase the impact of these attacks, surpassing the risks associated with more conventional centralised learning.
 
 Numerous security and privacy issues can still affect FL. On the security front, the vulnerabilities include Byzantine attacks that aim to obstruct model convergence and, poisoning attacks, that are deliberately designed to influence convergence in the wrong direction.
